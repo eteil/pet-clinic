@@ -1,4 +1,4 @@
 package com.dej.petclinic.models;
 
-public class Owner extends Person {
+public class Pet extends Person {
 }
