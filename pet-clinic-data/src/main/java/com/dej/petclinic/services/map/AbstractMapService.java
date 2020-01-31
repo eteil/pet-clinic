@@ -1,9 +1,6 @@
 package com.dej.petclinic.services.map;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public abstract class AbstractMapService<T, ID> {
 
@@ -28,5 +25,9 @@ public abstract class AbstractMapService<T, ID> {
 
     void delete(T object){
         map.entrySet().removeIf(entry -> entry.getValue().equals(object));
+    }
+
+    public Long getNextId(){
+        return this.map.keySet().size() == 0 ? 1 : Collections.max((Set<Long>)map.keySet()) + 1;
     }
 }

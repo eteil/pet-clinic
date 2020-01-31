@@ -26,6 +26,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long>  implements
 
     @Override
     public Owner save(Owner object) {
+        object.setId(super.getNextId());
         return super.save(object.getId(), object);
     }
 
@@ -38,4 +39,6 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long>  implements
     public Owner findByLastName(String lastName) {
         return null;
     }
+
+
 }
