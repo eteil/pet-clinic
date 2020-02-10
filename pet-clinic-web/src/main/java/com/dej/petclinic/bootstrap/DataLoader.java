@@ -1,11 +1,9 @@
 package com.dej.petclinic.bootstrap;
 
-import com.dej.petclinic.models.Owner;
-import com.dej.petclinic.models.Pet;
-import com.dej.petclinic.models.PetType;
-import com.dej.petclinic.models.Vet;
+import com.dej.petclinic.models.*;
 import com.dej.petclinic.services.OwnerService;
 import com.dej.petclinic.services.PetTypeService;
+import com.dej.petclinic.services.SpecialityService;
 import com.dej.petclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -24,6 +22,9 @@ public class DataLoader implements CommandLineRunner {
 
     @Autowired
     private PetTypeService petTypeService;
+
+    @Autowired
+    private SpecialityService specialityService;
 
 
     @Override
@@ -64,6 +65,9 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(o2);
 
         System.out.println("Owners loaded...");
+
+        Speciality s1 = new Speciality("s1");
+
 
         Vet v1 = new Vet("v1","v1");
 
