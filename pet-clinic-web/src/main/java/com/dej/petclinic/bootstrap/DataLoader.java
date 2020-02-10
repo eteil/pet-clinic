@@ -1,8 +1,10 @@
 package com.dej.petclinic.bootstrap;
 
 import com.dej.petclinic.models.Owner;
+import com.dej.petclinic.models.PetType;
 import com.dej.petclinic.models.Vet;
 import com.dej.petclinic.services.OwnerService;
+import com.dej.petclinic.services.PetTypeService;
 import com.dej.petclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,9 +19,19 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     private VetService vetService;
 
+    @Autowired
+    private PetTypeService petTypeService;
+
 
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog = new PetType("dog");
+        PetType savedDog = petTypeService.save(dog);
+
+
+        PetType cat = new PetType("cat");
+        PetType savedCat = petTypeService.save(cat);
 
 
         Owner o1 = new Owner("o1","o1");
