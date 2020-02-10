@@ -67,13 +67,15 @@ public class DataLoader implements CommandLineRunner {
         System.out.println("Owners loaded...");
 
         Speciality s1 = new Speciality("s1");
-
+        Speciality s2 = new Speciality("s2");
 
         Vet v1 = new Vet("v1","v1");
+        v1.getSpecialities().add(s1);
 
         vetService.save(v1);
 
         Vet v2 = new Vet("v2","v2");
+        v2.getSpecialities().add(s2);
 
         vetService.save(v2);
 
