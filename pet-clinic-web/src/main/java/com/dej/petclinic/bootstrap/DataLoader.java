@@ -1,11 +1,7 @@
 package com.dej.petclinic.bootstrap;
 
 import com.dej.petclinic.models.*;
-import com.dej.petclinic.services.OwnerService;
-import com.dej.petclinic.services.PetTypeService;
-import com.dej.petclinic.services.SpecialityService;
-import com.dej.petclinic.services.VetService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.dej.petclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -14,17 +10,22 @@ import java.time.LocalDate;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    @Autowired
     private OwnerService ownerService;
-
-    @Autowired
     private VetService vetService;
-
-    @Autowired
     private PetTypeService petTypeService;
-
-    @Autowired
     private SpecialityService specialityService;
+    private VisitService visitService;
+    private PetService petService;
+
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialityService specialityService, VisitService visitService, PetService petService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
+        this.petTypeService = petTypeService;
+        this.specialityService = specialityService;
+        this.visitService = visitService;
+        this.petService = petService;
+    }
 
 
     @Override
@@ -56,7 +57,17 @@ public class DataLoader implements CommandLineRunner {
         o1.getPets().add(d1);
         o1.getPets().add(c1);
 
+
+
         ownerService.save(o1);
+
+        Visit DVisist = new Visit();
+        DVisist.setDate(LocalDate.now());
+        DVisist.setDescription("visite du chien");
+        DVisist.setPet(d1);
+
+        Visit savedVisit = visitService.save(DVisist);
+        System.out.println("visits loaded....");
 
         Owner o2 = new Owner("o2", "o2");
         o2.setAddress("yde");
