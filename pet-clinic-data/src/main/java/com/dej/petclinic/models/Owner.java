@@ -1,5 +1,6 @@
 package com.dej.petclinic.models;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -27,6 +28,7 @@ public class Owner extends Person {
     public Owner() {
     }
 
+    @Builder
     public Owner(String firstName, String lastName) {
         super(firstName, lastName);
     }
