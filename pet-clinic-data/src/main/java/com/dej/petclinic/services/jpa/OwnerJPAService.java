@@ -2,8 +2,6 @@ package com.dej.petclinic.services.jpa;
 
 import com.dej.petclinic.models.Owner;
 import com.dej.petclinic.repositories.OwnerRepo;
-import com.dej.petclinic.repositories.PetRepo;
-import com.dej.petclinic.repositories.PetTypeRepo;
 import com.dej.petclinic.services.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -17,14 +15,11 @@ import java.util.Set;
 public class OwnerJPAService implements OwnerService {
 
     private final OwnerRepo ownerRepo;
-    private final PetRepo petRepo;
-    private final PetTypeRepo petTypeRepo;
 
     @Autowired
-    public OwnerJPAService(OwnerRepo ownerRepo, PetRepo petRepo, PetTypeRepo petTypeRepo) {
+    public OwnerJPAService(OwnerRepo ownerRepo) {
         this.ownerRepo = ownerRepo;
-        this.petRepo = petRepo;
-        this.petTypeRepo = petTypeRepo;
+
     }
 
     @Override
