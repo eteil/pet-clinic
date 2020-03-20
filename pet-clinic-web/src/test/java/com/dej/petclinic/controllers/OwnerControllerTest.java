@@ -3,6 +3,7 @@ package com.dej.petclinic.controllers;
 import com.dej.petclinic.services.OwnerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
@@ -17,6 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class OwnerControllerTest {
 
+    @InjectMocks
     OwnerController ownerController;
 
     @Mock
@@ -46,5 +48,10 @@ class OwnerControllerTest {
         mockMvc.perform(get("/owners"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/index"));
+    }
+
+    @Test
+    void findOwners() {
+
     }
 }
