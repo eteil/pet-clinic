@@ -46,7 +46,7 @@ public class DataLoader implements CommandLineRunner {
         PetType savedCat = petTypeService.save(cat);
 
 
-        Owner o1 = new Owner("o1","o1");
+        Owner o1 = Owner.builder().firstName("o1").lastName("o1").build();
         o1.setAddress("dla");
         o1.setCity("dla4");
         o1.setTelephone("6165165");
@@ -69,7 +69,7 @@ public class DataLoader implements CommandLineRunner {
         Visit savedVisit = visitService.save(DVisist);
         System.out.println("visits loaded....");
 
-        Owner o2 = new Owner("o2", "o2");
+        Owner o2 = Owner.builder().firstName("o2").lastName("o2").build();
         o2.setAddress("yde");
         o2.setCity("yde3");
         o2.setTelephone("6165165");
